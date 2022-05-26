@@ -6,10 +6,11 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
+#include <time.h>
 #include "relmetric.h"
 
-#define DEBUG 1
-#define TEST_CASES 1
+#define DEBUG 0
+#define TEST_CASES 100
 #define MAX_COLS 4
 #define MAX_ROWS 4
 
@@ -17,6 +18,9 @@ int main(){
   relation r1, r2, r3;
   int d12, d13, d23;
   int i, j, fail, rows_per_unsigned;
+
+  /* Random seed */
+  srand((unsigned)time(NULL));
     
   /* Preallocate relations */
   rows_per_unsigned = 8*sizeof(unsigned);
@@ -84,6 +88,11 @@ int main(){
       printf("\nRelation 3:\n");
       print_relation( &r3 );
     }
+#if DEBUG
+    else{
+      printf("Pass\n");
+    }
+#endif
   }
   
   /* Free relations */
