@@ -117,6 +117,7 @@ int weight( relation *r1, relation *r2, int *col_matches ){
   
   /* Apply penalty for unmatched columns */
   diff += (r2->column_count-use_count)*r2->row_count;
+  /*diff += (r2->column_count-use_count); This is what's in the paper, and it's wrong! */
 #if DEBUG
   printf("Penalty=%d ",(r2->column_count-use_count)*r2->row_count);
 #endif
