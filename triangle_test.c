@@ -5,9 +5,10 @@
 
 #include <stdio.h>
 #include <malloc.h>
+#include <stdlib.h>
 #include "relmetric.h"
 
-#define DEBUG 0
+#define DEBUG 1
 #define TEST_CASES 1
 #define MAX_COLS 4
 #define MAX_ROWS 4
@@ -15,24 +16,24 @@
 int main(){
   relation r1, r2, r3;
   int d12, d13, d23;
-  int i, fail, rows_per_unsighed;
+  int i, j, fail, rows_per_unsigned;
     
   /* Preallocate relations */
   rows_per_unsigned = 8*sizeof(unsigned);
   r1.bitfield = malloc(sizeof(unsigned)*MAX_COLS*(MAX_ROWS/rows_per_unsigned+1));
   if( r1.bitfield == NULL ){
-    return;
+    return(1);
   }
   r2.bitfield = malloc(sizeof(unsigned)*MAX_COLS*(MAX_ROWS/rows_per_unsigned+1));
   if( r2.bitfield == NULL ){
     free(r1.bitfield);
-    return;
+    return(1);
   }
   r3.bitfield = malloc(sizeof(unsigned)*MAX_COLS*(MAX_ROWS/rows_per_unsigned+1));
   if( r3.bitfield == NULL ){
     free(r1.bitfield);
     free(r2.bitfield);
-    return;
+    return(1);
   }
 
   for(i = 0; i < TEST_CASES; i ++){
@@ -89,4 +90,6 @@ int main(){
   free(r1.bitfield);
   free(r2.bitfield);
   free(r3.bitfield);
+
+  return(0);
 }
