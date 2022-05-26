@@ -24,8 +24,14 @@ int main(){
   r1.bitfield[1]=0x00000000;
   r2.bitfield[1]=0x0000000f;
   r2.bitfield[2]=0x00000010;
-  
-  printf("metric = %d\n",rel_metric(&r1,&r2));
+
+  printf("Relation 1:\n");
+  print_relation( &r1 );
+
+  printf("\nRelation 2:\n");
+  print_relation( &r2 );
+
+  printf("\nMetric = %d\n",rel_metric(&r1,&r2));
   
   free(r1.bitfield);
   free(r2.bitfield);

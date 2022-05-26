@@ -189,3 +189,28 @@ int rel_metric( relation *r1, relation *r2 ){
     return(w1);
   return(w2);
 }
+
+/* Print out a relation */
+int print_relation( relation *r1 ){
+  int i, j, k;
+  int rows_per_unsigned, column_length;
+  unsigned col_field;
+
+  /* Storage length of each column */
+  rows_per_unsigned = 8*sizeof(unsigned);
+  column_length = (r1->row_count/rows_per_unsigned);
+  if(r1->row_count % rows_per_unsigned){
+    column_length ++;
+  }  
+
+  for( i = 0; i < r1->row_count; i ++ ){
+    for( j = 0; j < r1->column_count; j ++){
+      col_field = r1->bitfield[column_length*j+i/rows_per_unsigned];
+      for( k = 0; k < i; k ++ ){
+	col_field >>= 1;
+      }
+      printf("%c",(col_field & 0x01)?'1':'0');
+    }
+    printf("\n");
+  }
+}

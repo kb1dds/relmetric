@@ -15,3 +15,6 @@ typedef struct{
 
 /* Compute the distance between two relations */
 int rel_metric( relation *r1, relation *r2 );
+
+/* Print out a relation */
+int print_relation( relation *r1 );
