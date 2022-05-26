@@ -39,8 +39,8 @@ int main(){
   for(i = 0; i < TEST_CASES; i ++){
     /* Randomly size relations */
     r1.row_count = (rand()%MAX_ROWS)+1;
-    r2.row_count = (rand()%MAX_ROWS)+1;
-    r3.row_count = (rand()%MAX_ROWS)+1;
+    r2.row_count = r1.row_count;
+    r3.row_count = r1.row_count;
     r1.column_count = (rand()%MAX_COLS)+1;
     r2.column_count = (rand()%MAX_COLS)+1;
     r3.column_count = (rand()%MAX_COLS)+1;
