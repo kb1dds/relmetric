@@ -10,9 +10,9 @@
 #include "relmetric.h"
 
 #define DEBUG 0
-#define TEST_CASES 100
-#define MAX_COLS 4
-#define MAX_ROWS 4
+#define TEST_CASES 1000
+#define MAX_COLS 6 /* Note this scales badly */
+#define MAX_ROWS 8 /* No real problem with scaling here */
 
 int main(){
   relation r1, r2, r3;
